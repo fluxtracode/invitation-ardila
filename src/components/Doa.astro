@@ -1,0 +1,168 @@
+---
+import config from '../data/config.json';
+
+const { quotes, wedding } = config;
+const { groom, bride } = wedding;
+---
+
+<section id="doa-section" class="doa-section relative py-20 sm:py-28 px-6 bg-white text-[#1f1c1b] overflow-hidden">
+  <!-- Subtle ambient glow -->
+  <div class="absolute inset-0 pointer-events-none opacity-40">
+    <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-[#fee2e6] blur-3xl"></div>
+  </div>
+
+  <div class="relative max-w-4xl mx-auto flex flex-col items-center text-center space-y-16">
+    <!-- Section Header / Salam -->
+    <div class="doa-item opacity-0 translate-y-6 flex flex-col items-center space-y-4">
+      <span class="text-2xl sm:text-3xl tracking-[0.2em] uppercase text-[#9f4a5c] font-light">
+        بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
+      </span>
+      <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-[#1f1c1b] leading-tight">
+        Doa & Restu Pernikahan
+      </h2>
+      <div class="flex items-center gap-3 w-40 justify-center my-2">
+        <span class="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#f8b4c2]"></span>
+        <span class="text-[#9f4a5c] text-xs">✦</span>
+        <span class="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#f8b4c2]"></span>
+      </div>
+      <p class="text-[#5e5450] text-xs sm:text-sm max-w-lg font-light leading-relaxed">
+        Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Dengan memohon rahmat dan ridho-Nya, kami bermaksud menyelenggarakan syukuran pernikahan kami.
+      </p>
+    </div>
+
+    <!-- Quotes & Quran Verses (Doa Items) with Sharp Luxury Frames -->
+    <div class="w-full space-y-8 max-w-2xl">
+      {quotes.map((q, idx) => (
+        <div class="doa-item opacity-0 translate-y-6 relative border border-[#f8b4c2]/50 bg-white p-6 sm:p-10 text-center shadow-lg shadow-pink-100/60">
+          <div class="absolute inset-1.5 border border-[#fee2e6]/80 pointer-events-none"></div>
+
+          <!-- Corner Accents -->
+          <div class="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-[#c97385]"></div>
+          <div class="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-[#c97385]"></div>
+          <div class="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-[#c97385]"></div>
+          <div class="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-[#c97385]"></div>
+
+          <p class="font-serif text-lg sm:text-xl md:text-2xl text-[#1f1c1b] italic leading-relaxed pt-2">
+            "{q.text}"
+          </p>
+
+          <div class="mt-6 inline-flex items-center gap-2">
+            <span class="h-[1px] w-6 bg-[#f8b4c2]"></span>
+            <span class="px-3 py-1 bg-[#fee2e6] border border-[#f8b4c2] text-[11px] sm:text-xs tracking-[0.25em] uppercase font-mono text-[#6e2736] font-medium">
+              {q.source}
+            </span>
+            <span class="h-[1px] w-6 bg-[#f8b4c2]"></span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Groom & Bride Profile Cards (Editorial Sharp Portrait Frames) -->
+    <div class="w-full pt-4">
+      <div class="doa-item opacity-0 translate-y-6 mb-12">
+
+        <h3 class="font-serif text-2xl sm:text-3xl text-[#1f1c1b]">Mempelai Pengantin</h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+        <!-- Groom Card -->
+        <div class="doa-item opacity-0 translate-y-6 relative border border-[#f8b4c2]/50 bg-white p-6 sm:p-8 flex flex-col items-center text-center shadow-lg shadow-pink-100/60">
+          <div class="absolute inset-1.5 border border-[#fee2e6]/80 pointer-events-none"></div>
+
+          <!-- Mihrab Arch Portrait with Layered Frames -->
+          <div class="relative w-56 h-72 sm:w-72 sm:h-96 mb-5 group">
+            <!-- Offset accent outline -->
+            <div class="absolute inset-0 -translate-x-2.5 -translate-y-2.5 rounded-t-full border border-[#f8b4c2]/60"></div>
+            <!-- Main arch frame -->
+            <div class="relative w-full h-full rounded-t-full border border-[#f8b4c2] p-1.5 bg-white overflow-hidden shadow-xl shadow-pink-100/70">
+              <div class="relative w-full h-full overflow-hidden rounded-t-full">
+                <img
+                  src="/images/groom.jpg"
+                  alt={groom.fullName}
+                  class="w-full h-full object-cover object-top filter brightness-100 group-hover:scale-105 transition-transform duration-700"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#6e2736]/40 via-transparent to-transparent"></div>
+              </div>
+              <!-- Inner hairline -->
+              <div class="absolute inset-2 rounded-t-full border border-[#fee2e6] pointer-events-none"></div>
+            </div>
+            <!-- Apex ornament -->
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 flex items-center justify-center w-7 h-7 rounded-full border border-[#f8b4c2] bg-white shadow-sm text-[#9f4a5c] text-xs">
+              ✦
+            </div>
+          </div>
+
+          <h4 class="font-serif text-xl sm:text-2xl text-[#1f1c1b]">{groom.fullName}</h4>
+          <p class="text-[11px] uppercase tracking-[0.3em] text-[#9f4a5c] font-medium mt-1">Mempelai Pria</p>
+
+          <div class="w-12 h-[1px] bg-[#f8b4c2] my-3"></div>
+
+          <p class="text-xs sm:text-sm text-[#5e5450] leading-relaxed font-light">
+            Putra tercinta dari: <br/>
+            <span class="font-medium text-[#1f1c1b]">{groom.father}</span> & <span class="font-medium text-[#1f1c1b]">{groom.mother}</span>
+          </p>
+
+          {groom.instagram && (
+            <a
+              href={`https://instagram.com/${groom.instagram}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-4 inline-flex items-center gap-2 px-4 py-1.5 bg-[#fee2e6] hover:bg-[#ffd5dc] border border-[#f8b4c2] text-[11px] text-[#6e2736] tracking-wider transition-colors shadow-sm"
+            >
+              <span>@{groom.instagram}</span>
+            </a>
+          )}
+        </div>
+
+        <!-- Bride Card -->
+        <div class="doa-item opacity-0 translate-y-6 relative border border-[#f8b4c2]/50 bg-white p-6 sm:p-8 flex flex-col items-center text-center shadow-lg shadow-pink-100/60">
+          <div class="absolute inset-1.5 border border-[#fee2e6]/80 pointer-events-none"></div>
+
+          <!-- Mihrab Arch Portrait with Layered Frames -->
+          <div class="relative w-56 h-72 sm:w-72 sm:h-96 mb-5 group">
+            <!-- Offset accent outline -->
+            <div class="absolute inset-0 translate-x-2.5 -translate-y-2.5 rounded-t-full border border-[#f8b4c2]/60"></div>
+            <!-- Main arch frame -->
+            <div class="relative w-full h-full rounded-t-full border border-[#f8b4c2] p-1.5 bg-white overflow-hidden shadow-xl shadow-pink-100/70">
+              <div class="relative w-full h-full overflow-hidden rounded-t-full">
+                <img
+                  src="/images/bride.jpg"
+                  alt={bride.fullName}
+                  class="w-full h-full object-cover object-top filter brightness-100 group-hover:scale-105 transition-transform duration-700"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#6e2736]/40 via-transparent to-transparent"></div>
+              </div>
+              <!-- Inner hairline -->
+              <div class="absolute inset-2 rounded-t-full border border-[#fee2e6] pointer-events-none"></div>
+            </div>
+            <!-- Apex ornament -->
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 flex items-center justify-center w-7 h-7 rounded-full border border-[#f8b4c2] bg-white shadow-sm text-[#9f4a5c] text-xs">
+              ✦
+            </div>
+          </div>
+
+          <h4 class="font-serif text-xl sm:text-2xl text-[#1f1c1b]">{bride.fullName}</h4>
+          <p class="text-[11px] uppercase tracking-[0.3em] text-[#9f4a5c] font-medium mt-1">Mempelai Wanita</p>
+
+          <div class="w-12 h-[1px] bg-[#f8b4c2] my-3"></div>
+
+          <p class="text-xs sm:text-sm text-[#5e5450] leading-relaxed font-light">
+            Putri tercinta dari: <br/>
+            <span class="font-medium text-[#1f1c1b]">{bride.father}</span> & <span class="font-medium text-[#1f1c1b]">{bride.mother}</span>
+          </p>
+
+          {bride.instagram && (
+            <a
+              href={`https://instagram.com/${bride.instagram}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-4 inline-flex items-center gap-2 px-4 py-1.5 bg-[#fee2e6] hover:bg-[#ffd5dc] border border-[#f8b4c2] text-[11px] text-[#6e2736] tracking-wider transition-colors shadow-sm"
+            >
+              <span>@{bride.instagram}</span>
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

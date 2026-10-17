@@ -1,0 +1,211 @@
+---
+import config from '../data/config.json';
+
+const { groom, bride, dateDisplay, dateRoman, music } = config.wedding;
+const initials = `${groom.shortName.charAt(0)}${bride.shortName.charAt(0)}`;
+---
+
+<div
+  id="gate-overlay"
+  class="fixed inset-0 z-50 flex flex-col items-center justify-center p-6 sm:p-12 text-center transition-all duration-1000 ease-out bg-white text-[#1f1c1b]"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Gerbang Undangan Pernikahan"
+>
+  <!-- Background Image with Luminous Romance Scrim -->
+  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <img
+      src="/images/hero-couple.jpg"
+      alt={`${groom.shortName} & ${bride.shortName}`}
+      class="w-full h-full object-cover object-center filter brightness-[1.0] contrast-[1.02] blur-[8px] scale-100 transition-transform duration-10000"
+      id="gate-bg-img"
+    />
+    <!-- Radiant Bright Scrim -->
+    <div class="absolute inset-0 bg-gradient-to-b from-white/75 via-white/35 to-white/95"></div>
+    <!-- Soft romantic rose glow -->
+    <div class="absolute left-1/2 top-1/3 -translate-x-1/2 w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-[#fee2e6] opacity-60 blur-3xl"></div>
+  </div>
+
+  <!-- Decorative Hairline Border Outer Frame -->
+  <div class="absolute inset-3 sm:inset-6 z-0 border border-[#f8b4c2]/50 pointer-events-none">
+    <div class="absolute inset-1.5 border border-[#fee2e6]/80"></div>
+
+    <!-- Ornamental Flourish Corners -->
+    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" class="absolute -top-0.5 -left-0.5 w-8 h-8 sm:w-10 sm:h-10 text-[#c97385]">
+      <path d="M2 18 V2 H18" />
+      <path d="M2 2 C 15 4, 22 11, 24 24" stroke-linecap="round" />
+      <circle cx="4" cy="4" r="1.6" fill="currentColor" stroke="none" />
+    </svg>
+    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" class="absolute -top-0.5 -right-0.5 w-8 h-8 sm:w-10 sm:h-10 text-[#c97385] rotate-90">
+      <path d="M2 18 V2 H18" />
+      <path d="M2 2 C 15 4, 22 11, 24 24" stroke-linecap="round" />
+      <circle cx="4" cy="4" r="1.6" fill="currentColor" stroke="none" />
+    </svg>
+    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" class="absolute -bottom-0.5 -left-0.5 w-8 h-8 sm:w-10 sm:h-10 text-[#c97385] -rotate-90">
+      <path d="M2 18 V2 H18" />
+      <path d="M2 2 C 15 4, 22 11, 24 24" stroke-linecap="round" />
+      <circle cx="4" cy="4" r="1.6" fill="currentColor" stroke="none" />
+    </svg>
+    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" class="absolute -bottom-0.5 -right-0.5 w-8 h-8 sm:w-10 sm:h-10 text-[#c97385] rotate-180">
+      <path d="M2 18 V2 H18" />
+      <path d="M2 2 C 15 4, 22 11, 24 24" stroke-linecap="round" />
+      <circle cx="4" cy="4" r="1.6" fill="currentColor" stroke="none" />
+    </svg>
+  </div>
+
+  <!-- Content: stacked on mobile, two columns on desktop -->
+  <div class="relative z-10 w-full max-w-5xl mx-auto my-auto grid grid-cols-1 md:grid-cols-2 items-center gap-8 md:gap-0 px-4">
+
+    <!-- LEFT COLUMN: Bismillah, Monogram & Couple Names -->
+    <div class="flex flex-col items-center text-center space-y-4 sm:space-y-5 md:pr-12 md:border-r md:border-[#f8b4c2]/40">
+      <!-- Bismillah Calligraphy -->
+      <p dir="rtl" class="font-serif text-lg sm:text-xl text-[#9f4a5c] leading-relaxed">
+        بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
+      </p>
+
+      <p class="text-[11px] sm:text-xs tracking-[0.4em] uppercase text-[#7d6e68] font-light">
+        Undangan Pernikahan
+      </p>
+
+      <!-- Monogram Medallion Crest -->
+      <div class="relative w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center">
+        <!-- Beaded ornament ring -->
+        <svg viewBox="0 0 120 120" class="absolute inset-0 w-full h-full text-[#f8b4c2] spin-slower">
+          <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 7" stroke-linecap="round" />
+          <circle cx="60" cy="60" r="48" fill="none" stroke="#fee2e6" stroke-width="1" />
+          <!-- Cardinal diamonds -->
+          <g fill="#c97385">
+            <path d="M60 2 l3 4 -3 4 -3 -4 z" />
+            <path d="M60 110 l3 4 -3 4 -3 -4 z" />
+            <path d="M2 60 l4 -3 4 3 -4 3 z" />
+            <path d="M110 60 l4 -3 4 3 -4 3 z" />
+          </g>
+        </svg>
+        <!-- Inner seal -->
+        <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-[#f8b4c2] bg-white/90 backdrop-blur-md shadow-lg shadow-pink-100/70 flex items-center justify-center">
+          <div class="absolute inset-1 rounded-full border border-[#fee2e6]"></div>
+          <span class="font-serif text-2xl sm:text-3xl tracking-tight text-[#9f4a5c]">
+            {initials.charAt(0)}<span class="text-[#c97385] text-base sm:text-lg align-middle mx-0.5 italic">&amp;</span>{initials.charAt(1)}
+          </span>
+        </div>
+      </div>
+
+      <!-- Couple Names -->
+      <h1 class="font-serif text-5xl sm:text-6xl md:text-7xl tracking-wide text-[#1f1c1b] leading-tight">
+        <span class="block">{groom.shortName}</span>
+        <span class="font-serif text-3xl sm:text-4xl text-[#9f4a5c] font-normal italic my-1 block">&</span>
+        <span class="block">{bride.shortName}</span>
+      </h1>
+    </div>
+
+    <!-- RIGHT COLUMN: Date, Guest Card & Open Button -->
+    <div class="flex flex-col items-center text-center space-y-4 sm:space-y-5 md:pl-12">
+      <!-- Ornamental Divider -->
+      <div class="flex items-center gap-3 w-56 justify-center my-1">
+        <span class="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#f8b4c2]"></span>
+        <span class="text-[#c97385] text-sm">✦</span>
+        <span class="font-serif text-[#9f4a5c] text-sm">❦</span>
+        <span class="text-[#c97385] text-sm">✦</span>
+        <span class="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#f8b4c2]"></span>
+      </div>
+
+      <p class="text-sm sm:text-base text-[#7d6e68] tracking-[0.25em] uppercase font-mono font-light">
+        {dateRoman || dateDisplay}
+      </p>
+
+      <!-- Guest Name Container with Crisp Luxury Frame -->
+      <div id="guest-card" class="mt-4 p-5 border border-[#f8b4c2]/70 bg-white/95 backdrop-blur-md max-w-xs w-full text-center relative shadow-lg shadow-pink-100/70">
+        <div class="absolute inset-1 border border-[#fee2e6]/80 pointer-events-none"></div>
+        <div class="absolute -top-px left-1/2 -translate-x-1/2 w-8 h-2 bg-[#fee2e6] border-x border-[#f8b4c2]"></div>
+        <p class="text-[11px] text-[#7d6e68] tracking-[0.2em] uppercase font-light">
+          Kepada Yth. Bapak/Ibu/Saudara/i:
+        </p>
+        <p id="guest-name" class="text-lg sm:text-xl font-serif text-[#1f1c1b] mt-1 capitalize tracking-wider font-normal">
+          Tamu Undangan
+        </p>
+      </div>
+
+      <!-- Open Button with Crisp Luxury Border & Pink Accent -->
+      <div class="pt-2 w-full max-w-xs flex flex-col items-center">
+        <button
+          id="btn-open-invitation"
+          type="button"
+          class="group relative flex w-full items-center justify-center gap-3 px-8 py-3.5 sm:px-10 sm:py-4 text-xs sm:text-sm tracking-[0.25em] uppercase font-medium text-[#6e2736] bg-[#fee2e6] hover:bg-[#ffd5dc] border border-[#f8b4c2] active:scale-95 transition-all duration-300 shadow-xl shadow-pink-200/70 cursor-pointer animate-pulse-glow"
+        >
+          <svg class="w-4 h-4 text-[#9f4a5c] transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          <span>Buka Undangan</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Audio Element -->
+<audio id="wedding-audio" loop preload="none">
+  <source src={music.src} type="audio/mpeg" />
+  Browser Anda tidak mendukung elemen audio.
+</audio>
+
+<script>
+  import { animateHero, setupScrollAnimations } from '../scripts/animations.js';
+
+  // Extract recipient name from URL (?to=...). URLSearchParams already decodes
+  // the value, and we render it with textContent so it can never be parsed as HTML.
+  const params = new URLSearchParams(window.location.search);
+  const guestParam = params.get('to') || params.get('u');
+  const guestNameEl = document.getElementById('guest-name');
+  if (guestParam && guestNameEl) {
+    const safeName = guestParam.replace(/[\u0000-\u001f\u007f]/g, '').trim().slice(0, 60);
+    if (safeName) guestNameEl.textContent = safeName;
+  }
+
+  // Audio & Gate Logic
+  const overlay = document.getElementById('gate-overlay');
+  const btnOpen = document.getElementById('btn-open-invitation');
+  const audio = document.getElementById('wedding-audio') as HTMLAudioElement | null;
+  const musicToggle = document.getElementById('music-toggle-btn');
+
+  // Prevent scrolling while gate overlay is visible
+  document.body.style.overflow = 'hidden';
+
+  if (btnOpen && overlay) {
+    btnOpen.addEventListener('click', () => {
+      // 1. Play Background Music (browser interaction compliance)
+      if (audio) {
+        audio.volume = 0.35;
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch((err) => {
+            console.warn('Audio playback prevented or loading:', err);
+          });
+        }
+      }
+
+      // Update music toggle button state if present
+      if (musicToggle) {
+        musicToggle.classList.remove('hidden');
+        musicToggle.setAttribute('data-playing', 'true');
+        const iconDisk = musicToggle.querySelector('.music-disk');
+        if (iconDisk) iconDisk.classList.remove('spin-paused');
+      }
+
+      // 2. Animate and remove overlay
+      overlay.style.opacity = '0';
+      overlay.style.pointerEvents = 'none';
+      overlay.style.transform = 'scale(1.02)';
+
+      setTimeout(() => {
+        overlay.classList.add('hidden');
+        document.body.style.overflow = '';
+
+        // 3. Trigger Hero Entrance Animation (Lightweight Vanilla JS)
+        animateHero();
+
+        // 4. Setup Scroll Triggers (Lightweight Native IntersectionObserver)
+        setupScrollAnimations();
+      }, 700);
+    });
+  }
+</script>

@@ -1,0 +1,135 @@
+---
+import config from '../data/config.json';
+
+const { groom, bride, dateDisplay, dateRoman, isoDate } = config.wedding;
+---
+
+<header class="relative min-h-screen flex flex-col justify-between items-center text-center overflow-hidden px-6 py-12 text-[#1f1c1b] bg-white">
+  <!-- Luminous Romance Background Image with Radiant Scrim -->
+  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <img
+      src="/images/hero-couple.jpg"
+      alt={`${groom.shortName} & ${bride.shortName}`}
+      class="w-full h-full object-cover object-center filter brightness-[1.0] contrast-[1.02] blur-[8px] scale-100"
+    />
+    <!-- Radiant Bright White & Blush Gradient for 100% Crisp Legibility -->
+    <div class="absolute inset-0 bg-gradient-to-b from-white/75 via-white/30 to-white"></div>
+  </div>
+
+  <!-- Decorative Hairline Border Framing -->
+  <div class="absolute inset-4 sm:inset-8 z-0 border border-[#f8b4c2]/50 pointer-events-none">
+    <div class="absolute inset-1.5 border border-[#fee2e6]/80"></div>
+    <!-- Corner Accents -->
+    <div class="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-[#c97385]"></div>
+    <div class="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-[#c97385]"></div>
+    <div class="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-[#c97385]"></div>
+    <div class="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-[#c97385]"></div>
+  </div>
+
+  <!-- Hero Top Badge -->
+  <div class="hero-badge relative z-10 pt-4 sm:pt-8 opacity-0 translate-y-4">
+    <div class="inline-flex items-center gap-3 px-5 py-2 border border-[#f8b4c2] bg-[#fee2e6] shadow-sm">
+      <span class="text-[#9f4a5c] text-xs">✦</span>
+      <span class="text-[11px] sm:text-xs tracking-[0.35em] uppercase font-light text-[#6e2736]">
+        Walimatul 'Urs
+      </span>
+      <span class="text-[#9f4a5c] text-xs">✦</span>
+    </div>
+  </div>
+
+  <!-- Hero Main Content -->
+  <div class="hero-content relative z-10 opacity-0 translate-y-6 max-w-xl mx-auto my-auto flex flex-col items-center space-y-4 px-4">
+    <!-- Couple Names with High Contrast -->
+    <h1 class="hero-names font-serif text-5xl sm:text-6xl md:text-7xl tracking-wide text-[#1f1c1b] leading-[1.15]">
+      <span class="block hover:text-[#9f4a5c] transition-colors duration-300">{groom.shortName}</span>
+      <span class="font-serif text-3xl sm:text-4xl text-[#9f4a5c] font-normal italic my-1 block">&</span>
+      <span class="block hover:text-[#9f4a5c] transition-colors duration-300">{bride.shortName}</span>
+    </h1>
+
+    <!-- Hairline Divider -->
+    <div class="flex items-center gap-3 w-48 justify-center my-2">
+      <span class="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#f8b4c2]"></span>
+      <span class="text-[#9f4a5c] text-xs font-serif">❦</span>
+      <span class="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#f8b4c2]"></span>
+    </div>
+
+    <!-- Date (Display & Roman) -->
+    <div class="hero-date flex flex-col items-center space-y-1">
+      <p class="text-base sm:text-base font-light tracking-[0.2em] uppercase text-[#4a403d]">
+        {dateDisplay}
+      </p>
+      {dateRoman && (
+        <p class="text-xs sm:text-[11px] font-mono tracking-[0.3em] uppercase text-[#9f4a5c]">
+          {dateRoman}
+        </p>
+      )}
+    </div>
+
+    <!-- Countdown Timer Container with Sharp Luxury Boxes -->
+    <div class="hero-countdown mt-6 grid grid-cols-4 gap-2 sm:gap-3 max-w-xs sm:max-w-sm w-full" data-iso-date={isoDate}>
+      <div class="p-3 border border-[#f8b4c2]/70 bg-white/95 backdrop-blur-md text-center relative shadow-md shadow-pink-100/50">
+        <div class="absolute inset-0.5 border border-[#fee2e6]/80 pointer-events-none"></div>
+        <span id="cd-days" class="block font-serif text-xl sm:text-2xl font-normal text-[#9f4a5c]">00</span>
+        <span class="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-[#7d6e68] font-light">Hari</span>
+      </div>
+      <div class="p-3 border border-[#f8b4c2]/70 bg-white/95 backdrop-blur-md text-center relative shadow-md shadow-pink-100/50">
+        <div class="absolute inset-0.5 border border-[#fee2e6]/80 pointer-events-none"></div>
+        <span id="cd-hours" class="block font-serif text-xl sm:text-2xl font-normal text-[#9f4a5c]">00</span>
+        <span class="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-[#7d6e68] font-light">Jam</span>
+      </div>
+      <div class="p-3 border border-[#f8b4c2]/70 bg-white/95 backdrop-blur-md text-center relative shadow-md shadow-pink-100/50">
+        <div class="absolute inset-0.5 border border-[#fee2e6]/80 pointer-events-none"></div>
+        <span id="cd-minutes" class="block font-serif text-xl sm:text-2xl font-normal text-[#9f4a5c]">00</span>
+        <span class="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-[#7d6e68] font-light">Menit</span>
+      </div>
+      <div class="p-3 border border-[#f8b4c2]/70 bg-white/95 backdrop-blur-md text-center relative shadow-md shadow-pink-100/50">
+        <div class="absolute inset-0.5 border border-[#fee2e6]/80 pointer-events-none"></div>
+        <span id="cd-seconds" class="block font-serif text-xl sm:text-2xl font-normal text-[#9f4a5c]">00</span>
+        <span class="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-[#7d6e68] font-light">Detik</span>
+      </div>
+    </div>
+  </div>
+  
+</header>
+
+<script>
+  // Real-time Countdown calculation
+  const countdownEl = document.querySelector('.hero-countdown');
+  const isoDate = countdownEl?.getAttribute('data-iso-date') || '';
+
+  function updateCountdown() {
+    const target = new Date(isoDate).getTime();
+    const now = new Date().getTime();
+    const diff = target - now;
+
+    if (diff <= 0) {
+      if (countdownEl) {
+        const done = document.createElement('div');
+        done.className = 'col-span-4 p-2 text-[#9f4a5c] font-serif text-sm';
+        done.textContent = 'Hari Bahagia Telah Tiba';
+        countdownEl.replaceChildren(done);
+      }
+      return;
+    }
+
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+    const pad = (n) => String(n).padStart(2, '0');
+
+    const elDays = document.getElementById('cd-days');
+    const elHours = document.getElementById('cd-hours');
+    const elMin = document.getElementById('cd-minutes');
+    const elSec = document.getElementById('cd-seconds');
+
+    if (elDays) elDays.textContent = pad(d);
+    if (elHours) elHours.textContent = pad(h);
+    if (elMin) elMin.textContent = pad(m);
+    if (elSec) elSec.textContent = pad(s);
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>

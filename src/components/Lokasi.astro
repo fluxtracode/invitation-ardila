@@ -1,0 +1,109 @@
+---
+import config from '../data/config.json';
+
+const { events } = config;
+---
+
+<section id="lokasi-section" class="lokasi-section relative py-20 sm:py-28 px-6 bg-white text-[#1f1c1b] overflow-hidden">
+  <!-- Subtle background glow -->
+  <div class="absolute inset-0 pointer-events-none opacity-40">
+    <div class="absolute bottom-10 left-10 w-96 h-96 rounded-full bg-[#fee2e6] blur-3xl"></div>
+  </div>
+
+  <div class="max-w-4xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-16 space-y-3">
+      <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-[#1f1c1b] tracking-wide">
+        Informasi Acara
+      </h2>
+      <div class="flex items-center gap-3 w-40 justify-center mx-auto my-3">
+        <span class="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#f8b4c2]"></span>
+        <span class="text-[#9f4a5c] text-xs">✦</span>
+        <span class="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#f8b4c2]"></span>
+      </div>
+      <p class="text-[#5e5450] text-xs sm:text-sm font-light max-w-md mx-auto leading-relaxed">
+        Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.
+      </p>
+    </div>
+
+    <!-- 2 Cards: Akad & Resepsi (Sharp Luxury Rectangular Cards) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+      {events.map((evt, idx) => (
+        <div class="lokasi-card opacity-0 translate-y-6 relative border border-[#f8b4c2]/50 bg-white shadow-xl shadow-pink-100/60 flex flex-col justify-between">
+          <div class="absolute inset-1.5 border border-[#fee2e6]/80 pointer-events-none"></div>
+
+          <!-- Corner Accents -->
+          <div class="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-[#c97385] z-20"></div>
+          <div class="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-[#c97385] z-20"></div>
+          <div class="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-[#c97385] z-20"></div>
+          <div class="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-[#c97385] z-20"></div>
+
+          <!-- Card Image Header -->
+          <div class="relative h-48 sm:h-56 overflow-hidden border-b border-[#f8b4c2]/40">
+            <img
+              src={evt.id === 'akad' ? '/images/akad.jpg' : '/images/resepsi.jpg'}
+              alt={evt.title}
+              class="w-full h-full object-cover object-center filter brightness-100 hover:scale-105 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent"></div>
+            <div class="absolute bottom-4 left-6 right-6 flex items-end justify-between text-[#1f1c1b]">
+              <div>
+                <h3 class="font-serif text-2xl sm:text-3xl font-normal mt-1.5 text-[#1f1c1b]">
+                  {evt.title}
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card Body Details -->
+          <div class="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <!-- Date & Time -->
+              <div class="flex items-start gap-3.5">
+                <div class="w-8 h-8 border border-[#f8b4c2] bg-[#fee2e6] text-[#9f4a5c] flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-[10px] uppercase tracking-[0.25em] text-[#8c7e77] font-mono">Hari & Tanggal</p>
+                  <p class="font-serif text-lg text-[#1f1c1b]">{evt.date}</p>
+                  <p class="text-xs font-mono text-[#9f4a5c] font-medium tracking-wider mt-0.5">{evt.time}</p>
+                </div>
+              </div>
+
+              <!-- Venue & Address -->
+              <div class="flex items-start gap-3.5">
+                <div class="w-8 h-8 border border-[#f8b4c2] bg-[#fee2e6] text-[#9f4a5c] flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-[10px] uppercase tracking-[0.25em] text-[#8c7e77] font-mono">Lokasi Acara</p>
+                  <p class="font-serif text-lg text-[#1f1c1b]">{evt.venue}</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Button: Google Maps -->
+            <div class="pt-2">
+              <a
+                href={evt.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group w-full inline-flex items-center justify-center gap-2 py-3 px-5 text-xs tracking-[0.25em] uppercase font-medium text-[#6e2736] bg-[#fee2e6] hover:bg-[#ffd5dc] border border-[#f8b4c2] active:scale-95 transition-all duration-300 shadow-md shadow-pink-100 cursor-pointer"
+              >
+                <svg class="w-4 h-4 transition-transform group-hover:scale-110 text-[#9f4a5c]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                </svg>
+                <span>Lihat Google Maps</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

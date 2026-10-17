@@ -1,0 +1,85 @@
+{
+  "wedding": {
+    "title": "Undangan Pernikahan - Ardi & Dila",
+    "groom": {
+      "fullName": "Mardiansyah, S. PT",
+      "shortName": "Ardi",
+      "father": "Bapak Syaripuddin",
+      "mother": "Ibu Marwati",
+      "instagram": ""
+    },
+    "bride": {
+      "fullName": "Dila Yulistiawati, S. PD",
+      "shortName": "Dila",
+      "father": "Bapak Lukman",
+      "mother": "Ibu Hartatia",
+      "instagram": ""
+    },
+    "dateDisplay": "Jum'at, 23 Oktober 2026",
+    "dateRoman": "XXIII . X . MMXXVI",
+    "isoDate": "2026-10-22T19:00:00+08:00",
+    "music": {
+      "src": "/music/background.mp3",
+      "volume": 0.35,
+      "title": "Canon in D - Classical Romance"
+    }
+  },
+  "quotes": [
+    {
+      "text": "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berpikir.",
+      "source": "QS. Ar-Rum: 21"
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/images/gallery-1.jpg",
+      "caption": "Half of Me",
+      "location": "Botanical Sanctuary"
+    },
+    {
+      "src": "/images/gallery-2.jpg",
+      "caption": "Bridewealth",
+      "location": "Jakarta Garden"
+    },
+    {
+      "src": "/images/gallery-3.jpg",
+      "caption": "Looking To Each Other",
+      "location": "The Pine Hill"
+    },
+    {
+      "src": "/images/gallery-4.jpg",
+      "caption": "King and Queen",
+      "location": "Bandung Highlands"
+    },
+    {
+      "src": "/images/gallery-5.jpg",
+      "caption": "The Eternal Flower",
+      "location": "Sacred Vow"
+    },
+    {
+      "src": "/images/gallery-6.jpg",
+      "caption": "Ready for the Future",
+      "location": "The Pavilion"
+    }
+  ],
+  "events": [
+    {
+      "id": "akad",
+      "title": "Akad Nikah",
+      "date": "Kamis, 22 Oktober 2026",
+      "time": "19.00 WITA - Selesai",
+      "venue": "Rumah Mempelai Perempuan",
+      "address": "Rumah Mempelai Perempuan",
+      "mapsUrl": "https://maps.app.goo.gl/aboP4Cr9U81fjxoT8"
+    },
+    {
+      "id": "resepsi",
+      "title": "Resepsi Pernikahan",
+      "date": "Jum'at, 23 Oktober 2026",
+      "time": "09.00 WITA - Selesai",
+      "venue": "Rumah Mempelai Laki-laki",
+      "address": "Rumah Mempelai Laki-laki",
+      "mapsUrl": "https://maps.app.goo.gl/oLsEJn9vkZbNEV8F8"
+    }
+  ]
+}

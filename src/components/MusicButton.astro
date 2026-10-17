@@ -1,0 +1,55 @@
+---
+---
+
+<!-- Floating Music Toggle Controller (Luxury Sharp Emblem) -->
+<button
+  id="music-toggle-btn"
+  type="button"
+  aria-label="Toggle musik latar"
+  class="fixed bottom-6 right-6 z-40 w-11 h-11 sm:w-12 sm:h-12 border border-[#f8b4c2] bg-[#fee2e6]/95 backdrop-blur-md text-[#6e2736] shadow-xl shadow-pink-200/60 flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer hidden"
+  data-playing="false"
+>
+  <div class="absolute inset-0.5 border border-[#f8b4c2]/50 pointer-events-none"></div>
+
+  <!-- Music Indicator Icon -->
+  <div class="music-disk w-6 h-6 border border-dashed border-[#9f4a5c] flex items-center justify-center spin-slow spin-paused">
+    <svg class="w-3.5 h-3.5 text-[#6e2736]" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+    </svg>
+  </div>
+</button>
+
+<script>
+  const toggleBtn = document.getElementById('music-toggle-btn');
+  const audio = document.getElementById('wedding-audio') as HTMLAudioElement | null;
+
+  if (toggleBtn && audio) {
+    toggleBtn.addEventListener('click', () => {
+      const isPlaying = toggleBtn.getAttribute('data-playing') === 'true';
+      const disk = toggleBtn.querySelector('.music-disk');
+
+      if (isPlaying) {
+        audio.pause();
+        toggleBtn.setAttribute('data-playing', 'false');
+        if (disk) disk.classList.add('spin-paused');
+      } else {
+        audio.play().then(() => {
+          toggleBtn.setAttribute('data-playing', 'true');
+          if (disk) disk.classList.remove('spin-paused');
+        }).catch(err => console.log('Audio playback prevented:', err));
+      }
+    });
+
+    audio.addEventListener('play', () => {
+      toggleBtn.setAttribute('data-playing', 'true');
+      const disk = toggleBtn.querySelector('.music-disk');
+      if (disk) disk.classList.remove('spin-paused');
+    });
+
+    audio.addEventListener('pause', () => {
+      toggleBtn.setAttribute('data-playing', 'false');
+      const disk = toggleBtn.querySelector('.music-disk');
+      if (disk) disk.classList.add('spin-paused');
+    });
+  }
+</script>

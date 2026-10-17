@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Opening from '../components/Opening.astro';
+import Hero from '../components/Hero.astro';
+import Doa from '../components/Doa.astro';
+import Gallery from '../components/Gallery.astro';
+import Lokasi from '../components/Lokasi.astro';
+import MusicButton from '../components/MusicButton.astro';
+import config from '../data/config.json';
+
+const { groom, bride, dateDisplay, dateRoman } = config.wedding;
+const pageTitle = `${groom.shortName} & ${bride.shortName} - The Wedding Invitation`;
+---
+
+<Layout title={pageTitle}>
+  <!-- 1. Opening / Gate Overlay (Tap-to-Open + Audio Autoplay compliant) -->
+  <Opening />
+
+  <!-- 2. Hero Section -->
+  <Hero />
+
+  <!-- 3. Doa Section -->
+  <Doa />
+
+  <!-- 4. Gallery Section (Horizontal Carousel) -->
+  <Gallery />
+
+  <!-- 6. Lokasi Section -->
+  <Lokasi />
+
+  <!-- Floating Audio Controls -->
+  <MusicButton />
+
+  <!-- Luxury Editorial Footer Section -->
+  <footer class="py-20 px-6 text-center bg-white text-[#1f1c1b] border-t border-[#f8b4c2]/40 relative overflow-hidden">
+    <!-- Decorative Border Frame -->
+    <div class="absolute inset-4 sm:inset-8 border border-[#f8b4c2]/35 pointer-events-none">
+      <div class="absolute inset-1 border border-[#fee2e6]/80 pointer-events-none"></div>
+    </div>
+
+    <div class="max-w-xl mx-auto space-y-6 relative z-10">
+      <!-- Monogram -->
+      <div class="w-12 h-12 mx-auto border border-[#f8b4c2] text-[#6e2736] flex items-center justify-center font-serif text-lg tracking-widest bg-[#fee2e6] shadow-sm">
+        <span>A</span><span class="text-xs italic mx-0.5">&</span><span>D</span>
+      </div>
+
+      <h2 class="font-serif text-3xl sm:text-5xl text-[#1f1c1b] tracking-wide">
+        {groom.shortName} & {bride.shortName}
+      </h2>
+
+      <p class="text-xs sm:text-sm text-[#5e5450] font-light max-w-md mx-auto leading-relaxed">
+        Terima kasih atas doa, restu, dan kehadiran Anda di hari bahagia kami. Semoga cinta dan keberkahan senantiasa menyertai kita semua.
+      </p>
+
+      <div class="flex items-center gap-3 w-40 justify-center mx-auto my-3">
+        <span class="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#f8b4c2]"></span>
+        <span class="text-[#9f4a5c] text-xs">✦</span>
+        <span class="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#f8b4c2]"></span>
+      </div>
+
+      <div class="space-y-1">
+        <p class="text-xs uppercase tracking-[0.3em] text-[#4a403d] font-light">
+          {dateDisplay}
+        </p>
+        {dateRoman && (
+          <p class="text-[11px] font-mono tracking-[0.25em] text-[#9f4a5c]">
+            {dateRoman}
+          </p>
+        )}
+      </div>
+    </div>
+  </footer>
+</Layout>

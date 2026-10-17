@@ -1,0 +1,128 @@
+---
+import config from '../data/config.json';
+
+const { gallery = [] } = config;
+---
+
+<section id="gallery-section" class="gallery-section relative py-20 sm:py-28 px-4 sm:px-8 bg-white text-[#1f1c1b] overflow-hidden">
+  <!-- Subtle pink radial ambient glow -->
+  <div class="absolute inset-0 pointer-events-none opacity-40">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#fee2e6] blur-[120px]"></div>
+  </div>
+
+  <div class="max-w-6xl mx-auto relative z-10">
+    <!-- Section Header -->
+    <div class="gallery-item opacity-0 translate-y-6 text-center mb-12 sm:mb-16 space-y-3">
+      <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-[#1f1c1b] tracking-wide">
+        Pre-Wedding Gallery
+      </h2>
+      <div class="flex items-center gap-3 w-40 justify-center mx-auto my-3">
+        <span class="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#f8b4c2]"></span>
+        <span class="text-[#9f4a5c] text-xs">✦</span>
+        <span class="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#f8b4c2]"></span>
+      </div>
+      <p class="text-[#5e5450] text-xs sm:text-sm font-light max-w-md mx-auto leading-relaxed">
+        Setiap potret mengabadikan cerita, senyuman, dan janji suci kami menuju hari yang dinantikan.
+      </p>
+    </div>
+
+    <!-- Carousel Wrapper with Navigation Arrows -->
+    <div class="gallery-item opacity-0 translate-y-6 relative">
+      <!-- Carousel Track -->
+      <div
+        id="gallery-track"
+        class="flex gap-4 sm:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar pb-6 px-2 sm:px-4 cursor-grab active:cursor-grabbing"
+      >
+        {gallery.map((item, index) => (
+          <div
+            class="snap-center shrink-0 w-[280px] sm:w-[340px] md:w-[380px] group select-none"
+            data-index={index}
+          >
+            <!-- Card Frame with Sharp Double Hairline Border -->
+            <div class="relative border border-[#f8b4c2]/50 bg-white p-2.5 transition-transform duration-500 group-hover:-translate-y-1 shadow-lg shadow-pink-100/60">
+              <div class="absolute inset-1 border border-[#fee2e6]/80 pointer-events-none"></div>
+
+              <!-- Corner Accents -->
+              <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-[#c97385]"></div>
+              <div class="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-[#c97385]"></div>
+              <div class="absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l border-[#c97385]"></div>
+              <div class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-[#c97385]"></div>
+
+              <!-- Image Container (Editorial 4:5 aspect ratio) -->
+              <div class="relative aspect-[4/5] overflow-hidden bg-pink-50/40">
+                <img
+                  src={item.src}
+                  alt={item.caption}
+                  loading="lazy"
+                  class="w-full h-full object-cover object-center filter brightness-100 group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+
+                <!-- Floating Index Tag -->
+                <div class="absolute top-3 right-3 px-2.5 py-0.5 bg-white/90 backdrop-blur-md border border-[#f8b4c2] text-[10px] font-mono tracking-widest text-[#6e2736] font-medium shadow-sm">
+                  {String(index + 1).padStart(2, '0')}
+                </div>
+
+                <!-- Caption at bottom of image -->
+                <div class="absolute bottom-3 left-3 right-3 text-left">
+                  <p class="font-serif text-base sm:text-lg text-white leading-snug">
+                    {item.caption}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Controls: Prev & Next Buttons -->
+      <div class="flex items-center justify-end pt-4 px-2 sm:px-4">
+        <!-- Arrow Buttons -->
+        <div class="flex items-center gap-2">
+          <button
+            id="gallery-prev"
+            type="button"
+            aria-label="Foto Sebelumnya"
+            class="w-10 h-10 border border-[#f8b4c2] bg-[#fee2e6] hover:bg-[#fcd5dc] text-[#6e2736] flex items-center justify-center transition-all duration-300 active:scale-95 cursor-pointer shadow-sm"
+          >
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button
+            id="gallery-next"
+            type="button"
+            aria-label="Foto Berikutnya"
+            class="w-10 h-10 border border-[#f8b4c2] bg-[#fee2e6] hover:bg-[#fcd5dc] text-[#6e2736] flex items-center justify-center transition-all duration-300 active:scale-95 cursor-pointer shadow-sm"
+          >
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const track = document.getElementById('gallery-track');
+  const prevBtn = document.getElementById('gallery-prev');
+  const nextBtn = document.getElementById('gallery-next');
+
+  if (track && prevBtn && nextBtn) {
+    const scrollStep = () => {
+      // Step roughly one card width
+      const firstCard = track.querySelector('[data-index]') as HTMLElement | null;
+      return firstCard ? firstCard.offsetWidth + 24 : 320;
+    };
+
+    prevBtn.addEventListener('click', () => {
+      track.scrollBy({ left: -scrollStep(), behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      track.scrollBy({ left: scrollStep(), behavior: 'smooth' });
+    });
+  }
+</script>
